@@ -18,7 +18,8 @@ public class Main {
                 "GPT-Premium",
                 800.0,
                 14,
-                64000
+                64000,
+                5
         );
 
         System.out.println("Choose Plan:");
@@ -48,7 +49,7 @@ public class Main {
                 sc.nextLine();
 
                 System.out.println("\nPrompt: " + prompt);
-                personal.runPrompt(inputTokens, outputTokens);
+                System.out.println(personal.runPrompt(inputTokens, outputTokens));
 
                 if (personal.getMonthlyQuota() == 0) {
                     System.out.println("\nQuota finished. Do you want to purchase more prompts? (yes/no)");
@@ -90,7 +91,7 @@ public class Main {
                 sc.nextLine();
 
                 System.out.println("\nPrompt: " + prompt);
-                pro.runPrompt(inputTokens, outputTokens);
+                System.out.println(pro.runPrompt(inputTokens, outputTokens));
 
                 System.out.println("\nDo you want to enter another prompt? (yes/no)");
                 String answer = sc.nextLine();
