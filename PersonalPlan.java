@@ -27,25 +27,22 @@ public class PersonalPlan extends AIModel {
     }
 
     // Run prompt
-    public void runPrompt(int inputTokens, int outputTokens) {
+    public String runPrompt(int inputTokens, int outputTokens) {
         int systemTokens = 500;
         int totalTokens = inputTokens + outputTokens + systemTokens;
 
         if (monthlyQuota <= 0) {
-            System.out.println("Quota Exhausted");
-            return;
+            return "Quota Exhausted";
         }
 
         if (totalTokens > getContextWindow()) {
-            System.out.println("Prompt rejected: Context limit exceeded.");
-            return;
+            return "Prompt rejected: Context limit exceeded.";
         }
 
         monthlyQuota--;
 
-        System.out.println("Prompt processed.");
-        System.out.println("Total tokens used: " + totalTokens);
-        System.out.println("Remaining quota: " + monthlyQuota);
+        return "Prompt processed.\nTotal tokens used: " + totalTokens
+                + "\nRemaining quota: " + monthlyQuota;
     }
 
     // Display plan info
